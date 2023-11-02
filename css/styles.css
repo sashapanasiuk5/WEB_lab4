@@ -1,35 +1,3 @@
-/*
-@keyframes hamburger-button-top{
-	from{
-		transform: translateY(0px) rotate(0deg);
-	}
-	to{
-		transform: translateY(11px) rotate(-45deg);
-	}
-}
-
-@keyframes hamburger-button-bottom{
-	from{
-		transform: translateY(0px) rotate(0deg);
-	}
-	to{
-		transform: translateY(-11px) rotate(45deg);
-	}
-}
-
-@keyframes hamburger-button-middle{
-	from{
-		opacity: 1;
-	}
-	to{
-		opacity: 0;
-	}
-}*/
-
-
-
-
-
 
 body, html{
 	margin: 0;
@@ -44,40 +12,28 @@ header{
 	padding-bottom: 15px;
 	display: flex;
 	justify-content: space-between;
+	z-index: 2;
+	position: relative;
+	background: #fff;
 }
 
 header .logo{
 	height: 35px;
 }
 
-.menu-wrapper{
-	height: 0;
+.menu-content{	
+	width: 200px;
 	position: absolute;
 	overflow: hidden;
 	z-index: 1;
 	right: 221px;
     top: 65px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.menu-wrapper.opened{
-	height: 30%;
-	transition: height 1s;
-}
-
-.menu-wrapper.closed{
-	height: 0;
-	transition: height 1s;
-}
-
-.menu-content{	
-	width: 200px;
 	background: #fff;
 	padding-bottom: 10px;
 	padding-top: 10px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    transform: translateY(-100%);
 }
 .menu-content ul{
 	margin:0;
@@ -88,6 +44,17 @@ header .logo{
 .menu-content li{
 	line-height: 1.5em;
 }
+
+.menu-content.opened{
+	transform: translateY(0px);
+	transition: transform 1s;
+}
+
+.menu-content.closed{
+	transform: translateY(-100%);
+	transition: transform 1s;
+}
+
 
 .hamburger-button{
 	z-index: 3;
@@ -101,22 +68,12 @@ header .logo{
 	margin-top: 8px;
 	margin-bottom: 8px;
 	background: #000;
-/*
-	animation-name: hamburger-button-middle;
-	animation-duration: 0.2s;
-	animation-fill-mode: backwards;
-	animation-direction: reverse;*/
 }
 .hamburger-button .bottom{
 	width: 30px;
 	height: 3px;
 	border-radius: 2px;
 	background: #000;
-/*
-		animation-name: hamburger-button-bottom;
-	animation-duration: 0.2s;
-	animation-fill-mode: backwards;
-	animation-direction: reverse;*/
 }
 
 .hamburger-button .top{
@@ -124,11 +81,6 @@ header .logo{
 	height: 3px;
 	border-radius: 2px;
 	background: #000;
-/*
-		animation-name: hamburger-button-top;
-	animation-duration: 0.2s;
-	animation-fill-mode: backwards;
-	animation-direction: reverse;*/
 }
 
 
@@ -275,4 +227,43 @@ footer{
 .unpressed.hamburger-button .top{
 	transform: translateY(0px) rotate(0deg);
 	transition: transform 0.5s;
+}
+
+@media only screen and (max-width: 700px) {
+
+	.main_title{
+		text-align: center;
+		width: 100% !important;
+		font-size: 32px !important;
+	}
+	.laptop{
+		position: relative;
+		top:0;
+		right: 0;
+		width: 100%;
+	}
+	.title{
+		text-align: center;
+	}
+	.cards{
+		flex-direction: column;
+		gap:20px;
+	}
+	footer{
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	.menu-content{
+		left: 0;
+	    top: 40;
+	    width: 100%;
+	}
+	.menu-content.opened{
+		transform: translateY(0px);
+		transition: transform 1s;
+	}
+	.menu-content.closed{
+		transform: translateY(-100%);
+		transition: transform 1s;
+	}
 }

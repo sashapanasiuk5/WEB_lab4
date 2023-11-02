@@ -1,9 +1,7 @@
 
 
 let hamburgerButton = document.querySelector(".hamburger-button");
-let menu = document.querySelector(".menu-wrapper");
-
-
+let menu = document.querySelector(".menu-content");
 
 hamburgerButton.addEventListener("click", function (e) {
 
