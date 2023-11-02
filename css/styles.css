@@ -1,3 +1,36 @@
+/*
+@keyframes hamburger-button-top{
+	from{
+		transform: translateY(0px) rotate(0deg);
+	}
+	to{
+		transform: translateY(11px) rotate(-45deg);
+	}
+}
+
+@keyframes hamburger-button-bottom{
+	from{
+		transform: translateY(0px) rotate(0deg);
+	}
+	to{
+		transform: translateY(-11px) rotate(45deg);
+	}
+}
+
+@keyframes hamburger-button-middle{
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+	}
+}*/
+
+
+
+
+
+
 body, html{
 	margin: 0;
 	padding: 0;
@@ -17,35 +50,85 @@ header .logo{
 	height: 35px;
 }
 
-.menu{
-		margin-bottom: auto;
-	margin-top: auto;
-}
-.hamburger-button{
-	width: 30px;
-	height: 2px;
-	border-radius: 2px;
-	background: #000;
-	position: relative;
-}
-.hamburger-button::after{
-	content: "";
+.menu-wrapper{
+	height: 0;
 	position: absolute;
-	width: 30px;
-	height: 2px;
-	border-radius: 2px;
-	background: #000;
-	transform: translateY(8px);
+	overflow: hidden;
+	z-index: 1;
+	right: 221px;
+    top: 65px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-.hamburger-button::before{
-	content: "";
-	position: absolute;
+.menu-wrapper.opened{
+	height: 30%;
+	transition: height 1s;
+}
+
+.menu-wrapper.closed{
+	height: 0;
+	transition: height 1s;
+}
+
+.menu-content{	
+	width: 200px;
+	background: #fff;
+	padding-bottom: 10px;
+	padding-top: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.menu-content ul{
+	margin:0;
+	list-style: none;
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+}
+.menu-content li{
+	line-height: 1.5em;
+}
+
+.hamburger-button{
+	z-index: 3;
+	position: relative;
+}
+
+.hamburger-button .middle{
 	width: 30px;
-	height: 2px;
+	height: 3px;
+	border-radius: 2px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	background: #000;
+/*
+	animation-name: hamburger-button-middle;
+	animation-duration: 0.2s;
+	animation-fill-mode: backwards;
+	animation-direction: reverse;*/
+}
+.hamburger-button .bottom{
+	width: 30px;
+	height: 3px;
 	border-radius: 2px;
 	background: #000;
-	transform: translateY(-8px);
+/*
+		animation-name: hamburger-button-bottom;
+	animation-duration: 0.2s;
+	animation-fill-mode: backwards;
+	animation-direction: reverse;*/
+}
+
+.hamburger-button .top{
+	width: 30px;
+	height: 3px;
+	border-radius: 2px;
+	background: #000;
+/*
+		animation-name: hamburger-button-top;
+	animation-duration: 0.2s;
+	animation-fill-mode: backwards;
+	animation-direction: reverse;*/
 }
 
 
@@ -127,16 +210,29 @@ main>.main_title{
 	padding-bottom: 5px;
 }
 
+.card .link:hover:after{
+	content: "";
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	background: #F2994A;
+	left: 0;
+	bottom: 0;
+	transition: width 1s;
+}
+
 
 .card .link:after{
 	content: "";
 	position: absolute;
-	width: 100%;
+	width: 0;
 	height: 2px;
 	background: #F2994A;
 	left: 0;
 	bottom: 0;
+	transition: width 1s;
 }
+
 
 footer{
 	background: #333333;
@@ -149,3 +245,34 @@ footer{
 	color: #fff;
 }
 
+
+
+.pressed.hamburger-button .middle{
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.pressed.hamburger-button .bottom{
+	transform: translateY(-11px) rotate(45deg);
+	transition: transform 0.5s;
+}
+
+.pressed.hamburger-button .top{
+	transform: translateY(11px) rotate(-45deg);
+	transition: transform 0.5s;
+}
+
+.unpressed.hamburger-button .middle{
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+
+.unpressed.hamburger-button .bottom{
+	transform: translateY(0px) rotate(0deg);
+	transition: transform 0.5s;
+}
+
+.unpressed.hamburger-button .top{
+	transform: translateY(0px) rotate(0deg);
+	transition: transform 0.5s;
+}
