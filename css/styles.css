@@ -234,7 +234,7 @@ footer{
 	.main_title{
 		text-align: center;
 		width: 100% !important;
-		font-size: 32px !important;
+		font-size: 36px !important;
 	}
 	.laptop{
 		position: relative;
@@ -248,8 +248,17 @@ footer{
 	.cards{
 		flex-direction: column;
 		gap:20px;
+		width:100%;
+	}
+	.card{
+		width: auto;
+
 	}
 	footer{
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	main{
 		padding-left: 10%;
 		padding-right: 10%;
 	}
